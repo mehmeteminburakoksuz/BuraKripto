@@ -35,7 +35,7 @@ const UserMenu = () => {
                 "
 
                 >
-                Airbnb your Home
+                BuraKripto your Home
                 </div>
                 <div
                 onClick={toggleOpen}
