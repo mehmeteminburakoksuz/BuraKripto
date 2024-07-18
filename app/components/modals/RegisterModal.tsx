@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
-import { signIn } from "next-auth/react";
+//import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -12,7 +12,7 @@ import {
   useForm
 } from "react-hook-form";
 
-import useLoginModal from "@/app/hooks/useLoginModal";
+//import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 import Modal from "./Modal";
@@ -22,7 +22,7 @@ import Button from "../Button";
 
 const RegisterModal= () => {
   const registerModal = useRegisterModal();
-  const loginModal = useLoginModal();
+  //const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const { 
@@ -46,7 +46,7 @@ const RegisterModal= () => {
     .then(() => {
       toast.success('Registered!');
       registerModal.onClose();
-      loginModal.onOpen();
+     // loginModal.onOpen();
     })
     .catch((error) => {
       toast.error('Something went wrong');
@@ -58,8 +58,8 @@ const RegisterModal= () => {
 
   const onToggle = useCallback(() => {
     registerModal.onClose();
-    loginModal.onOpen();
-  }, [registerModal, loginModal])
+   // loginModal.onOpen();
+  }, [registerModal])//, loginModal])
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -98,18 +98,18 @@ const RegisterModal= () => {
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
-      <Button 
+      {/* <Button 
         outline 
         label="Continue with Google"
         icon={FcGoogle}
         onClick={() => signIn('google')} 
-      />
-      <Button 
+      /> */}
+   {/*    <Button 
         outline 
         label="Continue with Github"
         icon={AiFillGithub}
         onClick={() => signIn('github')}
-      />
+      /> */}
       <div 
         className="
           text-neutral-500 
