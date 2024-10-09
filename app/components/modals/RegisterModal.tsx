@@ -123,7 +123,7 @@ const RegisterModal= () => {
             Already have an account?
         </div>
         <div 
-        onClick={registerModal.onClose}
+        onClick={onToggle}
         className="
         text-neutral-800
         cursor-pointer
