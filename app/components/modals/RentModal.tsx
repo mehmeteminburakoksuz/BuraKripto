@@ -15,6 +15,7 @@ import Input from "../inputs/Input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import FileUploadComponent from "../fileUpload";
 
 
 enum STEPS {
@@ -94,6 +95,7 @@ const onSubmit: SubmitHandler<FieldValues> = (data) => {
 
     axios.post('/api/listings', data)
     .then(() => {
+        console.log("Data Budur :",data)
         toast.success('Listing Created!');
         router.refresh();
         reset();
@@ -214,13 +216,19 @@ if (step === STEPS.IMAGES){
           title="Add a photo of your place"
           subtitle="Show guests what your place looks like!"
           />
-          <ImageUpload 
+          {/* <ImageUpload 
           value = {imageSrc}
           onChange={(value) => setCustomValue('imageSrc', value)}
-          />  
+          />   */}
+
+          <FileUploadComponent onUploadComplete={(url) => {
+        setCustomValue('imageSrc',url) 
+        console.log("url:",imageSrc)// Trigger form submission after upload
+      }} />
         </div>
     )
 }
+
 
 if (step === STEPS.DESCRIPTION) {
     bodyContent = (

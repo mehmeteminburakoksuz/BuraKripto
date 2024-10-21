@@ -20,6 +20,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 }) => {
 
 const handleUpload = useCallback((result: any) => {
+    console.log("allahı yokmuş,",result)
     onChange(result.info.secure_url);
 }, [onChange]);
 

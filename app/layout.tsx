@@ -7,6 +7,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 
 
@@ -30,6 +31,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+      <EdgeStoreProvider>
         <ClientOnly>
           <ToasterProvider/>
           <LoginModal/>
@@ -40,7 +42,7 @@ export default async function RootLayout({
         <div className="pb-20 pt-28">
         {children}
         </div>
-        
+      </EdgeStoreProvider>
       </body>
     </html>
   );

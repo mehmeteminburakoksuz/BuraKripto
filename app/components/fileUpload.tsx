@@ -1,9 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { useEdgeStore } from '../lib/edgestore';
+
 import toast from "react-hot-toast";
-import { Button } from './ui/button';
+import { useEdgeStore } from '@/lib/edgestore';
+
 
 interface FileUploadComponentProps {
   onUploadComplete: (url: string) => void;  // Callback when upload is complete
@@ -18,12 +19,12 @@ const FileUploadComponent: React.FC<FileUploadComponentProps> = ({ onUploadCompl
   const handleUpload = async () => {
     if (file) {
       try {
-        const res = await edgestore.myPubliImages.upload({
+        const res = await edgestore.publicFiles.upload({
           file,
-          input: { type: "post" }, // Include the required input property
           onProgressChange: (progress) => {
             setProgress(progress);
             console.log(progress); // Log progress
+            
           },
         });
 
@@ -32,6 +33,7 @@ const FileUploadComponent: React.FC<FileUploadComponentProps> = ({ onUploadCompl
         if (res.url) {
           setUrls(res.url); // Set the URL state
           onUploadComplete(res.url); // Call the upload complete callback
+          console.log(urls)
         } else {
           toast.error("Tekrar Deneyiniz");
           setProgress(0);
@@ -65,9 +67,16 @@ const FileUploadComponent: React.FC<FileUploadComponentProps> = ({ onUploadCompl
           />
         </div>
       )}
-      <Button variant={"default"} onClick={handleUpload} disabled={!file || progress > 0}>
+      <button
+        onClick={handleUpload}
+        disabled={!file || progress > 0}
+        className={`mt-4 px-4 py-2 rounded-md text-white 
+          ${(!file || progress > 0) 
+            ? 'bg-blue-300 cursor-not-allowed' 
+            : 'bg-blue-500 hover:bg-blue-600 cursor-pointer'}`}
+      >
         {progress === 0 ? "Upload" : `Uploading... ${progress}%`}
-      </Button>
+      </button>
     </div>
   );
 };

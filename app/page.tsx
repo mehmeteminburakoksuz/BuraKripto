@@ -36,7 +36,7 @@ if (listings.length === 0) {
       2xl:grid-cols-6
       gap-8
        ">
-        {listings.map((listing: any) => {
+        {listings.map((listing) => {
           return(
             <ListingCard
             currentUser = {currentUser}
