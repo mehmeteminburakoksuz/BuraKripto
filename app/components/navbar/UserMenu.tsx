@@ -12,6 +12,7 @@ import { SafeUser } from "@/app/types";
 import useRentModal from "@/app/hooks/useRentModal";
 import React from "react";
 import router from "next/router";
+import { useRouter } from "next/navigation";
 
 
 interface UserMenuProps {
@@ -22,6 +23,7 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({
     currentUser
 }) => {
+  const router = useRouter();
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
     const rentModal = useRentModal();
