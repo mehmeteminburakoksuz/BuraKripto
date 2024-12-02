@@ -8,6 +8,7 @@ import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
 import { EdgeStoreProvider } from "@/lib/edgestore";
+import SearchModal from "./components/modals/SearchModal";
 
 
 
@@ -35,6 +36,7 @@ export default async function RootLayout({
         <ClientOnly>
           <ToasterProvider/>
           <LoginModal/>
+          <SearchModal/>
           <RentModal/>
           <RegisterModal/>
           <Navbar currentUser={currentUser}/>
